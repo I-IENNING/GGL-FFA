@@ -3,7 +3,6 @@ package de.goethemc.schuldropdffaplugin;
 import de.goethemc.schuldropdffaplugin.commands.ArenaCommand;
 import de.goethemc.schuldropdffaplugin.listeners.*;
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SchulDropDffaPlugin extends JavaPlugin {
@@ -24,12 +23,8 @@ public final class SchulDropDffaPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new DisablePvpOnSpawnListener(this), this);
         getServer().getPluginManager().registerEvents(new DisableFallDamageListener(this),this);
         getServer().getPluginManager().registerEvents(new BlockPlace(this),this);
+        getServer().getPluginManager().registerEvents(new PlayerRespawnAndDeath(this),this);
 
 
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
     }
 }

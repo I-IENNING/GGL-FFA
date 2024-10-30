@@ -9,10 +9,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.List;
 
 public class JoinListener implements Listener {
     PvpTag taggerino = new PvpTag();
@@ -40,11 +36,10 @@ public class JoinListener implements Listener {
         player.sendTitle(ChatColor.YELLOW + "PVP", tag);
         player.playSound(player.getLocation(), Sound.BLOCK_BELL_USE, 1,1);
 
-
         Inventory inventory = player.getInventory();
         inventory.clear();
         //Set inventory
-        inv.getPlayerInv(inventory);
+        inv.setPlayerInv(inventory);
     }
 
 }
