@@ -1,7 +1,10 @@
 package de.goethemc.schuldropdffaplugin.listeners;
 
 import de.goethemc.schuldropdffaplugin.SchulDropDffaPlugin;
+import de.goethemc.schuldropdffaplugin.etc.PvpTag;
 import de.goethemc.schuldropdffaplugin.etc.SpawnInv;
+import io.papermc.paper.event.player.AsyncChatCommandDecorateEvent;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -16,6 +19,7 @@ public class PlayerRespawnAndDeath implements Listener {
     SpawnInv inv = new SpawnInv();
     private final SchulDropDffaPlugin plugin;
     public PlayerRespawnAndDeath(SchulDropDffaPlugin plugin){this.plugin = plugin;}
+    PvpTag tag = new PvpTag();
 
     @EventHandler
     public void onPlayerRespawn(PlayerRespawnEvent e){
@@ -39,6 +43,16 @@ public class PlayerRespawnAndDeath implements Listener {
 
         //geile alle sounds: https://minecraftsounds.com/
         p.getKiller().playSound(p.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_BREAK,1,1);
+
+        e.setDeathMessage(tag.getTag()+""+ChatColor.RED+" "+ChatColor.BOLD+""+p.getDisplayName()+
+                ""+ChatColor.WHITE+" wurde von "+ChatColor.GREEN+""+ChatColor.BOLD+""+p.getKiller().getDisplayName()+""+ChatColor.WHITE
+        +" getötet!");
+
+        double health = p.getKiller().getHealth()/2;
+        double healthRounded = Math.round(health*10);
+
+        p.sendMessage(tag.getTag()+ ChatColor.WHITE+" Du wurdest von "+ChatColor.DARK_PURPLE+""+ChatColor.BOLD+""+p.getKiller().getDisplayName()+""+ChatColor.WHITE+""+" getötet! "+
+               ChatColor.LIGHT_PURPLE +""+ChatColor.ITALIC+""+ healthRounded/10 +"/10 ❤");
     }
 
 }

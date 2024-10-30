@@ -52,6 +52,14 @@ public class KitCommand implements CommandExecutor {
             magicKit.setItemMeta(magicKitMeta);
 
 
+            partikel.setItem(0,classicKit);
+            partikel.setItem(2,tankKit);
+            partikel.setItem(4,axtKit);
+            partikel.setItem(6,rangeKit);
+            partikel.setItem(8,magicKit);
+
+            player.openInventory(partikel);
+
         }
         else{
             commandSender.sendMessage("Du musst ein Spieler sein.");

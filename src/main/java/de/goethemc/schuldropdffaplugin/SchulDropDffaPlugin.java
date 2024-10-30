@@ -1,6 +1,7 @@
 package de.goethemc.schuldropdffaplugin;
 
 import de.goethemc.schuldropdffaplugin.commands.ArenaCommand;
+import de.goethemc.schuldropdffaplugin.commands.KitCommand;
 import de.goethemc.schuldropdffaplugin.listeners.*;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,6 +17,7 @@ public final class SchulDropDffaPlugin extends JavaPlugin {
         saveConfig();
 
         this.getCommand("arena").setExecutor(new ArenaCommand(this));
+        this.getCommand("kit").setExecutor(new KitCommand());
 
         getServer().getPluginManager().registerEvents(new MenuListener(this), this);
         getServer().getPluginManager().registerEvents(new JoinListener(this), this);
