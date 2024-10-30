@@ -1,10 +1,7 @@
 package de.goethemc.schuldropdffaplugin;
 
 import de.goethemc.schuldropdffaplugin.commands.ArenaCommand;
-import de.goethemc.schuldropdffaplugin.listeners.DisableMiningOnSpawnListener;
-import de.goethemc.schuldropdffaplugin.listeners.DisablePvpOnSpawnListener;
-import de.goethemc.schuldropdffaplugin.listeners.JoinListener;
-import de.goethemc.schuldropdffaplugin.listeners.MenuListener;
+import de.goethemc.schuldropdffaplugin.listeners.*;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,6 +22,8 @@ public final class SchulDropDffaPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JoinListener(this), this);
         getServer().getPluginManager().registerEvents(new DisableMiningOnSpawnListener(this), this);
         getServer().getPluginManager().registerEvents(new DisablePvpOnSpawnListener(this), this);
+        getServer().getPluginManager().registerEvents(new DisableFallDamageListener(this),this);
+        getServer().getPluginManager().registerEvents(new BlockPlace(this),this);
 
 
     }

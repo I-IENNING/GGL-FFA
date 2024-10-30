@@ -18,10 +18,10 @@ public class ArenaCommand implements CommandExecutor {
         int yCord = plugin.getConfig().getInt("ArenaY");
         int zCord = plugin.getConfig().getInt("ArenaZ");
 
+
+        //Vllt. noch nen 5s counter wo man sich nicht bewegen darf, sonst kann man aus dem Kampf eif. "quitten"
         if(commandSender instanceof Player player){
             player.teleport(new Location(player.getWorld(),xCord,yCord,zCord));
-
-
         }
         else {
             commandSender.sendMessage("Du musst ein Spieler sein");

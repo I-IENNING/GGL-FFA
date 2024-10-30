@@ -26,11 +26,9 @@ public class DisableFallDamageListener implements Listener {
     public void onFallDamage(EntityDamageEvent event){
         int minFallDistance = plugin.getConfig().getInt("minFallDistance");
         if (event.getEntity() instanceof Player player){
-            if (event.getCause() == EntityDamageEvent.DamageCause.FALL){
-                if (player.getFallDistance() >= minFallDistance) {
+            if (event.getCause() == EntityDamageEvent.DamageCause.FALL && player.getFallDistance() >= minFallDistance){
                     event.setCancelled(true);
                     player.sendMessage(tag + ChatColor.GREEN + "Viel Erfolg in der Arena");
-                }
             }
         }
     }
