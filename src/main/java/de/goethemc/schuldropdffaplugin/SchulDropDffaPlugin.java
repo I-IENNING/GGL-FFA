@@ -26,7 +26,8 @@ public final class SchulDropDffaPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new DisableFallDamageListener(this),this);
         getServer().getPluginManager().registerEvents(new BlockPlace(this),this);
         getServer().getPluginManager().registerEvents(new PlayerRespawnAndDeath(this),this);
-        getServer().getPluginManager().registerEvents(new InventoryClick(), this);
+        getServer().getPluginManager().registerEvents(new InventoryClick(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerInteract(),this);
 
 
 

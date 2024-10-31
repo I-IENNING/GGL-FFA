@@ -170,4 +170,41 @@ public class Kits {
 
         return inv;
     }
+    public Inventory getAxe(Player p){
+        Inventory inv = p.getInventory();
+        inv.clear();
+
+        ItemStack schwert = new ItemStack(Material.DIAMOND_SWORD);
+        inv.setItem(0,schwert);
+
+        ItemStack axe = new ItemStack(Material.DIAMOND_AXE);
+        inv.setItem(1,axe);
+
+        ItemStack crossbow = new ItemStack(Material.CROSSBOW);
+        inv.setItem(2,crossbow);
+
+        ItemStack bogen = new ItemStack(Material.BOW);
+        inv.setItem(3,bogen);
+
+        ItemStack arrow = new ItemStack(Material.ARROW,7);
+        inv.setItem(8,arrow);
+
+        ItemStack shield = new ItemStack(Material.SHIELD);
+        inv.setItem(40,shield);
+
+        //Rüstung
+        ItemStack hose = new ItemStack(Material.DIAMOND_LEGGINGS);
+        inv.setItem(37,hose);
+
+        ItemStack helm = new ItemStack(Material.DIAMOND_HELMET);
+        inv.setItem(39,helm);
+
+        ItemStack botten = new ItemStack(Material.DIAMOND_BOOTS);
+        inv.setItem(36,botten);
+
+        ItemStack chest = new ItemStack(Material.DIAMOND_CHESTPLATE);
+        inv.setItem(38,chest);
+
+        return inv;
+    }
 }

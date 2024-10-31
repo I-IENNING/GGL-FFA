@@ -38,9 +38,9 @@ public class PlayerRespawnAndDeath implements Listener {
     }
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e){
+        e.getDrops().clear();
         if(e.getPlayer().getKiller() == null) return;
 
-        e.getDrops().clear();
         Player p = e.getPlayer();
 
         //geile alle sounds: https://minecraftsounds.com/

@@ -44,6 +44,10 @@ public class BlockPlace implements Listener {
     @EventHandler
     public void blockForm(BlockFromToEvent e){
         e.setCancelled(true);
+        replaceBlock(e.getToBlock());
+    }
+    @EventHandler public void obiForm(BlockFormEvent e){
+        replaceBlock(e.getBlock());
     }
 
     public void replaceBlock(Block block){
