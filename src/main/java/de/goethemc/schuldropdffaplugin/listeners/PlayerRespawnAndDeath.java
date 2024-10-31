@@ -38,6 +38,8 @@ public class PlayerRespawnAndDeath implements Listener {
     }
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e){
+        if(e.getPlayer().getKiller() == null) return;
+
         e.getDrops().clear();
         Player p = e.getPlayer();
 

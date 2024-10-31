@@ -6,7 +6,6 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -45,18 +44,18 @@ public class KitCommand implements CommandExecutor {
             rangeKitMeta.setLore(List.of("Bogen, Armbrust, etc."));
             rangeKit.setItemMeta(rangeKitMeta);
 
-            ItemStack magicKit = new ItemStack(Material.POTION);
-            ItemMeta magicKitMeta = magicKit.getItemMeta();
-            magicKitMeta.setDisplayName(ChatColor.DARK_PURPLE + "Zauberer");
-            magicKitMeta.setLore(List.of("Tränke"));
-            magicKit.setItemMeta(magicKitMeta);
+            ItemStack uhcKit = new ItemStack(Material.GOLDEN_APPLE);
+            ItemMeta uhcKitMeta = uhcKit.getItemMeta();
+            uhcKitMeta.setDisplayName(ChatColor.DARK_PURPLE + "UHC");
+            uhcKitMeta.setLore(List.of("Tränke"));
+            uhcKit.setItemMeta(uhcKitMeta);
 
 
             partikel.setItem(0,classicKit);
             partikel.setItem(2,tankKit);
             partikel.setItem(4,axtKit);
             partikel.setItem(6,rangeKit);
-            partikel.setItem(8,magicKit);
+            partikel.setItem(8, uhcKit);
 
             player.openInventory(partikel);
 

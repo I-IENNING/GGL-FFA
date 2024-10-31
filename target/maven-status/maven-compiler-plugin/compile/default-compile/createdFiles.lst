@@ -1,9 +1,12 @@
+de\goethemc\schuldropdffaplugin\listeners\InventoryClick$1.class
 de\goethemc\schuldropdffaplugin\listeners\MenuListener.class
 de\goethemc\schuldropdffaplugin\listeners\PlayerRespawnAndDeath.class
 de\goethemc\schuldropdffaplugin\commands\KitCommand.class
 de\goethemc\schuldropdffaplugin\etc\SpawnIsland.class
+de\goethemc\schuldropdffaplugin\listeners\InventoryClick.class
 de\goethemc\schuldropdffaplugin\listeners\DisablePvpOnSpawnListener.class
 de\goethemc\schuldropdffaplugin\commands\ArenaCommand.class
+de\goethemc\schuldropdffaplugin\etc\Kits.class
 de\goethemc\schuldropdffaplugin\SchulDropDffaPlugin.class
 de\goethemc\schuldropdffaplugin\listeners\BlockPlace$2.class
 de\goethemc\schuldropdffaplugin\listeners\DisableMiningOnSpawnListener.class
