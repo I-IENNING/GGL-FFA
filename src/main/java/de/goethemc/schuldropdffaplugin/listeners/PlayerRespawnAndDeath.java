@@ -34,7 +34,7 @@ public class PlayerRespawnAndDeath implements Listener {
 
         p.getInventory().clear();
         inv.setPlayerInv(p.getInventory());
-        p.playSound(p.getLocation(), Sound.ENTITY_ELDER_GUARDIAN_DEATH,1,1);
+        p.playSound(p, Sound.ENTITY_ELDER_GUARDIAN_DEATH,0.5F,0.1F);
     }
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e){
@@ -44,7 +44,7 @@ public class PlayerRespawnAndDeath implements Listener {
         Player p = e.getPlayer();
 
         //geile alle sounds: https://minecraftsounds.com/
-        p.getKiller().playSound(p.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_BREAK,1,1);
+        p.getKiller().playSound(p, Sound.BLOCK_AMETHYST_BLOCK_BREAK,1,1);
 
         e.setDeathMessage(tag.getTag()+""+ChatColor.RED+" "+ChatColor.BOLD+""+p.getDisplayName()+
                 ""+ChatColor.WHITE+" wurde von "+ChatColor.GREEN+""+ChatColor.BOLD+""+p.getKiller().getDisplayName()+""+ChatColor.WHITE

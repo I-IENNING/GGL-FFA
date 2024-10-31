@@ -1,11 +1,7 @@
-de\goethemc\schuldropdffaplugin\listeners\InventoryClick$1.class
 de\goethemc\schuldropdffaplugin\listeners\MenuListener.class
 de\goethemc\schuldropdffaplugin\listeners\PlayerRespawnAndDeath.class
-de\goethemc\schuldropdffaplugin\commands\KitCommand.class
 de\goethemc\schuldropdffaplugin\etc\SpawnIsland.class
-de\goethemc\schuldropdffaplugin\listeners\InventoryClick.class
 de\goethemc\schuldropdffaplugin\listeners\DisablePvpOnSpawnListener.class
-de\goethemc\schuldropdffaplugin\listeners\PlayerInteract.class
 de\goethemc\schuldropdffaplugin\commands\ArenaCommand.class
 de\goethemc\schuldropdffaplugin\etc\Kits.class
 de\goethemc\schuldropdffaplugin\SchulDropDffaPlugin.class
@@ -13,8 +9,11 @@ de\goethemc\schuldropdffaplugin\listeners\BlockPlace$2.class
 de\goethemc\schuldropdffaplugin\listeners\DisableMiningOnSpawnListener.class
 de\goethemc\schuldropdffaplugin\listeners\BlockPlace$1.class
 de\goethemc\schuldropdffaplugin\listeners\BlockPlace.class
+de\goethemc\schuldropdffaplugin\listeners\KitLogikWTF$1.class
+de\goethemc\schuldropdffaplugin\etc\KitsInv.class
 de\goethemc\schuldropdffaplugin\etc\PvpTag.class
 de\goethemc\schuldropdffaplugin\listeners\BlockPlace$3.class
 de\goethemc\schuldropdffaplugin\listeners\DisableFallDamageListener.class
 de\goethemc\schuldropdffaplugin\listeners\JoinListener.class
+de\goethemc\schuldropdffaplugin\listeners\KitLogikWTF.class
 de\goethemc\schuldropdffaplugin\etc\SpawnInv.class

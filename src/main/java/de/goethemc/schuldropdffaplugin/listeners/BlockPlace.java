@@ -72,7 +72,7 @@ public class BlockPlace implements Listener {
                 }
             }.runTaskLater(plugin, 20);
         }else{
-            Bukkit.getConsoleSender().sendMessage("Not same ");
+            //Bukkit.getConsoleSender().sendMessage("Nicht gleich! ");
         }
     }
 }
