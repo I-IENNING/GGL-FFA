@@ -14,10 +14,10 @@ public class Kits {
 
         ItemStack schwert = new ItemStack(Material.DIAMOND_SWORD);
         ItemMeta schwertMeta = schwert.getItemMeta();
-        schwertMeta.addEnchant(Enchantment.SHARPNESS,3,true);
+        schwertMeta.addEnchant(Enchantment.SHARPNESS,1,true);
         schwert.setItemMeta(schwertMeta);
 
-        ItemStack axt = new ItemStack(Material.DIAMOND_AXE);
+        ItemStack axt = new ItemStack(Material.IRON_AXE);
         ItemMeta axtMeta = axt.getItemMeta();
         axtMeta.addEnchant(Enchantment.SHARPNESS,1,true);
         axtMeta.addEnchant(Enchantment.UNBREAKING,2,true);
@@ -74,10 +74,10 @@ public class Kits {
         inv.setItem(9,arrows);
 
         //Rüstung
-        ItemStack hose = new ItemStack(Material.DIAMOND_LEGGINGS);
+        ItemStack hose = new ItemStack(Material.IRON_LEGGINGS);
         ItemMeta hoseMeta = hose.getItemMeta();
         hoseMeta.addEnchant(Enchantment.PROTECTION,2,true);
-        hoseMeta.addEnchant(Enchantment.UNBREAKING,1,true);
+        hoseMeta.addEnchant(Enchantment.UNBREAKING,2,true);
         hose.setItemMeta(hoseMeta);
         inv.setItem(37,hose);
 
@@ -95,7 +95,7 @@ public class Kits {
         botten.setItemMeta(bottenMeta);
         inv.setItem(36,botten);
 
-        ItemStack chest = new ItemStack(Material.DIAMOND_CHESTPLATE);
+        ItemStack chest = new ItemStack(Material.IRON_CHESTPLATE);
         ItemMeta chestMeta = chest.getItemMeta();
         chestMeta.addEnchant(Enchantment.PROTECTION,2,true);
         chestMeta.addEnchant(Enchantment.UNBREAKING,1,true);
@@ -110,6 +110,9 @@ public class Kits {
         inv.clear();
 
         ItemStack schwert = new ItemStack(Material.DIAMOND_SWORD);
+        ItemMeta schwertMeta = schwert.getItemMeta();
+        schwertMeta.addEnchant(Enchantment.SHARPNESS,2,true);
+        schwert.setItemMeta(schwertMeta);
         inv.setItem(0,schwert);
 
         ItemStack gap = new ItemStack(Material.GOLDEN_APPLE,2);
@@ -117,6 +120,9 @@ public class Kits {
 
         //Rüstung
         ItemStack hose = new ItemStack(Material.DIAMOND_LEGGINGS);
+        ItemMeta hoseMeta = hose.getItemMeta();
+        hoseMeta.addEnchant(Enchantment.PROTECTION,1,true);
+        hose.setItemMeta(hoseMeta);
         inv.setItem(37,hose);
 
         ItemStack helm = new ItemStack(Material.DIAMOND_HELMET);
@@ -126,6 +132,9 @@ public class Kits {
         inv.setItem(36,botten);
 
         ItemStack chest = new ItemStack(Material.DIAMOND_CHESTPLATE);
+        ItemMeta chestMeta = chest.getItemMeta();
+        chestMeta.addEnchant(Enchantment.PROTECTION,2,true);
+        chest.setItemMeta(chestMeta);
         inv.setItem(38,chest);
 
         return inv;
@@ -157,15 +166,33 @@ public class Kits {
 
         //Rüstung
         ItemStack hose = new ItemStack(Material.LEATHER_LEGGINGS);
+        ItemMeta hoseMeta = hose.getItemMeta();
+        hoseMeta.addEnchant(Enchantment.PROTECTION,4,true);
+        hoseMeta.setUnbreakable(true);
+        hose.setItemMeta(hoseMeta);
         inv.setItem(37,hose);
 
         ItemStack helm = new ItemStack(Material.LEATHER_HELMET);
+        ItemMeta helmMeta = helm.getItemMeta();
+        helmMeta.setUnbreakable(true);
+        helmMeta.addEnchant(Enchantment.PROTECTION,4,true);
+        helm.setItemMeta(helmMeta);
+
         inv.setItem(39,helm);
 
         ItemStack botten = new ItemStack(Material.LEATHER_BOOTS);
+        ItemMeta bottenMeta = botten.getItemMeta();
+        bottenMeta.setUnbreakable(true);
+        bottenMeta.addEnchant(Enchantment.PROTECTION,4,true);
+        botten.setItemMeta(bottenMeta);
         inv.setItem(36,botten);
 
-        ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE);
+        ItemStack chest = new ItemStack(Material.IRON_CHESTPLATE);
+        ItemMeta chestMeta = chest.getItemMeta();
+        chestMeta.addEnchant(Enchantment.PROTECTION,3,true);
+        chest.setItemMeta(chestMeta);
+
+
         inv.setItem(38,chest);
 
         return inv;

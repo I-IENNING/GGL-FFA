@@ -18,11 +18,6 @@ public class SpawnInv {
         selectorMeta.setLore(List.of("Wähle ein Kit für den Kampf"));
         selector.setItemMeta(selectorMeta);
 
-        ItemStack arenatp = new ItemStack(Material.IRON_SWORD);
-        ItemMeta arenatpMeta = arenatp.getItemMeta();
-        arenatpMeta.setDisplayName(ChatColor.GOLD + "ARENA");
-        arenatpMeta.setLore(List.of("Tritt der Arena zum Kampf bei"));
-        arenatp.setItemMeta(arenatpMeta);
 
         ItemStack lobbytp = new ItemStack(Material.COMPASS);
         ItemMeta lobbytpMeta = lobbytp.getItemMeta();
@@ -31,8 +26,7 @@ public class SpawnInv {
         lobbytp.setItemMeta(lobbytpMeta);
 
 
-        inventory.setItem(0, arenatp);
-        inventory.setItem(4, selector);
+        inventory.setItem(0, selector);
         inventory.setItem(8, lobbytp);
 
         return inventory;
