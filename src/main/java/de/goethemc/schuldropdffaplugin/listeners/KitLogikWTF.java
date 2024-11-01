@@ -47,7 +47,7 @@ public class KitLogikWTF implements Listener {
             switch (e.getCurrentItem().getType()) {
                 case Material.GOLDEN_APPLE:
                     if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD+"UHC")) {
-                        if (playerKitMap.containsKey(p) && playerKitMap.containsValue("UHC")) {
+                        if (playerKitMap.containsKey(p) && playerKitMap.get(p).equals("UHC")) {
                             //pl.sendMessage(tag.getTag()+ChatColor.RED+" Du kannst nicht das gleiche Kit zweimal auswählen!");
                             pl.playSound(pl, Sound.ENTITY_ITEM_PICKUP, 1.50F, 0.50F);
                         } else {
@@ -60,8 +60,9 @@ public class KitLogikWTF implements Listener {
                     break;
                 case Material.DIAMOND_SWORD:
                     if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.AQUA+"Only Sword")) {
-                        if (playerKitMap.containsKey(p) && playerKitMap.containsValue("ONLYSWORD")) {
+                        if (playerKitMap.containsKey(p) && playerKitMap.get(p).equals("ONLYSWORD")) {
                             //pl.sendMessage(tag.getTag()+ChatColor.RED+" Du kannst nicht das gleiche Kit zweimal auswählen!");
+                            //Bukkit.getConsoleSender().sendMessage("HalloTest");
                             pl.playSound(pl, Sound.ENTITY_ITEM_PICKUP, 1.50F, 0.50F);
                         } else {
                             pl.playSound(pl, Sound.ENTITY_ITEM_PICKUP, 1.5F, 1.3F);
@@ -73,9 +74,8 @@ public class KitLogikWTF implements Listener {
                     break;
                 case Material.MUSHROOM_STEW:
                     if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_GRAY+"Soup")){
-                        if(playerKitMap.containsKey(p) && playerKitMap.containsValue("SOUP")){
+                        if(playerKitMap.containsKey(p) && playerKitMap.get(p).equals("SOUP")){
                             pl.playSound(pl, Sound.ENTITY_ITEM_PICKUP, 1.50F,0.50F);
-
                         }else {
                             pl.playSound(pl, Sound.ENTITY_ITEM_PICKUP, 1.50F,1.50F);
                             playerKitMap.put(p, this.soup);
@@ -86,10 +86,9 @@ public class KitLogikWTF implements Listener {
                     break;
                 case Material.NETHERITE_AXE:
                     if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.RED+"Axt")) {
-                        if (playerKitMap.containsKey(p) && playerKitMap.containsValue("AXE")) {
+                        if (playerKitMap.containsKey(p) && playerKitMap.get(p).equals("AXE")) {
                             //pl.sendMessage(tag.getTag()+ChatColor.RED+" Du kannst nicht das gleiche Kit zweimal auswählen!");
                             pl.playSound(pl, Sound.ENTITY_ITEM_PICKUP, 1.50F, 0.50F);
-                            ;
                         } else {
                             pl.playSound(pl, Sound.ENTITY_ITEM_PICKUP, 1, 1);
                             playerKitMap.put(p, this.axe);
@@ -127,7 +126,7 @@ public class KitLogikWTF implements Listener {
     public void onInteract(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         if (p.getItemInHand().getType() == Material.DIAMOND) {
-            kInv.openKitsInv(p, getKit(p.getUniqueId()));
+            kInv.openKitsInv(p, playerKitMap.getOrDefault(p.getUniqueId(), ""));
         }
     }
 
@@ -153,10 +152,4 @@ public class KitLogikWTF implements Listener {
         }
     }
 
-    public String getKit(UUID p) {
-        if (playerKitMap.containsKey(p)) {
-            return playerKitMap.get(p);
-        }
-        return "";
-    }
 }

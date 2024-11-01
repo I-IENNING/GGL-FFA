@@ -2,6 +2,7 @@ package de.goethemc.schuldropdffaplugin;
 
 import de.goethemc.schuldropdffaplugin.commands.ArenaCommand;
 import de.goethemc.schuldropdffaplugin.listeners.*;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -10,7 +11,7 @@ public final class SchulDropDffaPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        System.out.println(ChatColor.GREEN + "funzt");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN+"/|GoetheMC| FFA-Plugin gestartet!/");
 
         getConfig().options().copyDefaults(true);
         saveConfig();

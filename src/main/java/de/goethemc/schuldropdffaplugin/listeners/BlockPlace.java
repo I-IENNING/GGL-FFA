@@ -28,7 +28,7 @@ public class BlockPlace implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                Bukkit.getConsoleSender().sendMessage("BlockPlaced: " + loc.getBlock().getType());
+                //Bukkit.getConsoleSender().sendMessage("BlockPlaced: " + loc.getBlock().getType());
                 replaceBlock(loc.getBlock());
             }
         }.runTaskLater(plugin, 1);
@@ -44,10 +44,18 @@ public class BlockPlace implements Listener {
     @EventHandler
     public void blockForm(BlockFromToEvent e){
         e.setCancelled(true);
-        replaceBlock(e.getToBlock());
     }
-    @EventHandler public void obiForm(BlockFormEvent e){
+
+    @EventHandler
+    public void blockFormE(BlockFormEvent e){
+        //Bukkit.getConsoleSender().sendMessage(e.getBlock()+"");
         replaceBlock(e.getBlock());
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                replaceBlock(e.getBlock());
+            }
+        }.runTaskLater(plugin, 1);
     }
 
     public void replaceBlock(Block block){

@@ -1,5 +1,6 @@
 de\goethemc\schuldropdffaplugin\listeners\MenuListener.class
 de\goethemc\schuldropdffaplugin\listeners\PlayerRespawnAndDeath.class
+de\goethemc\schuldropdffaplugin\listeners\BlockPlace$4.class
 de\goethemc\schuldropdffaplugin\etc\SpawnIsland.class
 de\goethemc\schuldropdffaplugin\listeners\DisablePvpOnSpawnListener.class
 de\goethemc\schuldropdffaplugin\commands\ArenaCommand.class
