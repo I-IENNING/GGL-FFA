@@ -4,3 +4,6 @@ main: de.goethemc.schuldropdffaplugin.SchulDropDffaPlugin
 api-version: '1.21'
 commands:
   arena:
+
+  kit:
+
