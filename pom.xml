@@ -46,7 +46,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.4.2</version>
                 <configuration>
-                    <outputDirectory>C:\Users\nikol.DESKTOP-MKDI0N5\Desktop\Privat\MinecraftStuff\LokalenMinecraftServer\FFASAerverGMC\plugins</outputDirectory>
+                    <outputDirectory>C:\Users\Henning\Documents\schule\Esport AG❤\Minecaft-Server\minecraft\pvp\plugins</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

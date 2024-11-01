@@ -1,6 +1,5 @@
 package de.goethemc.schuldropdffaplugin.etc;
 
-import com.sun.tools.javac.Main;
 import de.goethemc.schuldropdffaplugin.SchulDropDffaPlugin;
 
 public class SpawnIsland {
@@ -10,31 +9,31 @@ public class SpawnIsland {
     }
 
     public boolean isSpawnIsland(double x, double y, double z){
-        int smallerX = smallerValue("X");
-        int greaterX = greaterValue("X");
-        int smallerY = smallerValue("Y");
-        int greaterY = greaterValue("Y");
-        int smallerZ = smallerValue("Z");
-        int greaterZ = greaterValue("Z");
+        double smallerX = smallerValue("X");
+        double greaterX = greaterValue("X");
+        double smallerY = smallerValue("Y");
+        double greaterY = greaterValue("Y");
+        double smallerZ = smallerValue("Z");
+        double greaterZ = greaterValue("Z");
 
 
-        return x >= smallerX && x < greaterX &&
-                y > smallerY && y < greaterY &&
-                z > smallerZ && z < greaterZ;
+        return x >= smallerX && x <= greaterX &&
+                y >= smallerY && y <= greaterY &&
+                z >= smallerZ && z <= greaterZ;
     }
 
 
 
-    public int greaterValue(String path) {
-        int a = plugin.getConfig().getInt("spawn-area."+path+"1");
-        int b = plugin.getConfig().getInt("spawn-area."+path+"2");
+    public double greaterValue(String path) {
+        double a = plugin.getConfig().getInt("spawn-area."+path+"1");
+        double b = plugin.getConfig().getInt("spawn-area."+path+"2");
 
         if(a > b) return a;
         return b;
     }
-    public int smallerValue(String path){
-        int a = this.plugin.getConfig().getInt("spawn-area."+path+"1");
-        int b = this.plugin.getConfig().getInt("spawn-area."+path+"2");
+    public double smallerValue(String path){
+        double a = this.plugin.getConfig().getInt("spawn-area."+path+"1");
+        double b = this.plugin.getConfig().getInt("spawn-area."+path+"2");
 
         if(a <= b) return a;
         return b;

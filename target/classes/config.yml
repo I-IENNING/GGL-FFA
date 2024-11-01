@@ -9,3 +9,5 @@ spawn-area:
   Z1: 0
   Z2: 0
 minFallDistance: 100
+maxBauhoehe: 99
+

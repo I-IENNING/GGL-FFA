@@ -1,6 +1,5 @@
 package de.goethemc.schuldropdffaplugin;
 
-import de.goethemc.schuldropdffaplugin.commands.ArenaCommand;
 import de.goethemc.schuldropdffaplugin.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -16,7 +15,6 @@ public final class SchulDropDffaPlugin extends JavaPlugin {
         getConfig().options().copyDefaults(true);
         saveConfig();
 
-        this.getCommand("arena").setExecutor(new ArenaCommand(this));
 
         getServer().getPluginManager().registerEvents(new MenuListener(this), this);
         getServer().getPluginManager().registerEvents(new JoinListener(this), this);
@@ -26,5 +24,6 @@ public final class SchulDropDffaPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BlockPlace(this),this);
         getServer().getPluginManager().registerEvents(new PlayerRespawnAndDeath(this),this);
         getServer().getPluginManager().registerEvents(new KitLogikWTF(this), this);
+        getServer().getPluginManager().registerEvents(new SoupListener(), this);
     }
 }

@@ -2,9 +2,11 @@ package de.goethemc.schuldropdffaplugin.listeners;
 
 import de.goethemc.schuldropdffaplugin.SchulDropDffaPlugin;
 import de.goethemc.schuldropdffaplugin.etc.Kits;
+import de.goethemc.schuldropdffaplugin.etc.PvpTag;
 import io.papermc.paper.math.BlockPosition;
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockFormEvent;
@@ -15,6 +17,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class BlockPlace implements Listener {
+    PvpTag taggerino = new PvpTag();
+    String tag = taggerino.getTag();
 
     private SchulDropDffaPlugin plugin;
 
@@ -34,12 +38,20 @@ public class BlockPlace implements Listener {
         }.runTaskLater(plugin, 1);
 
     }
+
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent e) {
+        int maxY = plugin.getConfig().getInt("maxBauhoehe");
         Block block = e.getBlockPlaced();
-
+        Player player = e.getPlayer();
         if(e.getPlayer().getGameMode() != GameMode.CREATIVE)
             replaceBlock(block);
+        if(player.getLocation().getY() >= maxY ){
+            if (player.getGameMode() != GameMode.CREATIVE){
+                e.setCancelled(true);
+                player.sendMessage(tag + ChatColor.RED +" Du hast die maximale Bauhöhe erreicht!");
+            }
+        }
     }
     @EventHandler
     public void blockForm(BlockFromToEvent e){

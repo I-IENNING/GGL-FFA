@@ -12,19 +12,19 @@ import java.util.List;
 
 public class KitsInv {
     public void openKitsInv(Player player,String ausgewählt){
-        Inventory kitInv = Bukkit.createInventory(player, 9, ChatColor.GOLD +""+ChatColor.BOLD+ "Kits");
+        Inventory kitInv = Bukkit.createInventory(player, 9, ChatColor.GOLD + "Kits");
 
-        ItemStack onlySwordKit = new ItemStack(Material.DIAMOND_SWORD);
-        ItemMeta onlySwordKitMeta = onlySwordKit.getItemMeta();
-        onlySwordKitMeta.setDisplayName(ChatColor.AQUA+ "Only Sword");
-        onlySwordKitMeta.setLore(List.of("1 Schwert + 2 Gold Äpfel"));
-        onlySwordKit.setItemMeta(onlySwordKitMeta);
+        ItemStack classicKit = new ItemStack(Material.DIAMOND_SWORD);
+        ItemMeta classicKitMeta = classicKit.getItemMeta();
+        classicKitMeta.setDisplayName(ChatColor.AQUA+ "Only Sword");
+        classicKitMeta.setLore(List.of("1 Schwert + 2 Gold Äpfel"));
+        classicKit.setItemMeta(classicKitMeta);
 
-        ItemStack soupKit = new ItemStack(Material.MUSHROOM_STEW);
-        ItemMeta soupKitMeta = soupKit.getItemMeta();
-        soupKitMeta.setDisplayName(ChatColor.DARK_GRAY+ "Soup");
-        soupKitMeta.setLore(List.of("Eisenschwert + Lederrüstung + Soups"));
-        soupKit.setItemMeta(soupKitMeta);
+        ItemStack tankKit = new ItemStack(Material.MUSHROOM_STEW);
+        ItemMeta tankKitMeta = tankKit.getItemMeta();
+        tankKitMeta.setDisplayName(ChatColor.DARK_GRAY+ "Soup");
+        tankKitMeta.setLore(List.of("Eisenschwert + Lederrüstung + Soups"));
+        tankKit.setItemMeta(tankKitMeta);
 
         ItemStack axtKit = new ItemStack(Material.NETHERITE_AXE);
         ItemMeta axtKitMeta = axtKit.getItemMeta();
@@ -32,6 +32,11 @@ public class KitsInv {
         axtKitMeta.setLore(List.of("Schwert + Axt + Bogen + Crossbow + Dia-Rüstung"));
         axtKit.setItemMeta(axtKitMeta);
 
+        ItemStack rangeKit = new ItemStack(Material.BOW);
+        ItemMeta rangeKitMeta = rangeKit.getItemMeta();
+        rangeKitMeta.setDisplayName(ChatColor.YELLOW + "Fernkampf");
+        rangeKitMeta.setLore(List.of("Bogen, Armbrust, etc."));
+        rangeKit.setItemMeta(rangeKitMeta);
 
         ItemStack uhcKit = new ItemStack(Material.GOLDEN_APPLE);
         ItemMeta uhcKitMeta = uhcKit.getItemMeta();
@@ -40,23 +45,25 @@ public class KitsInv {
         uhcKit.setItemMeta(uhcKitMeta);
 
         switch (ausgewählt){
-            case "ONLYSWORD": onlySwordKitMeta.setLore(List.of(ChatColor.GREEN+"Ausgewählt."));
-                    onlySwordKit.setItemMeta(onlySwordKitMeta); break;
-            case "SOUP": soupKitMeta.setLore(List.of(ChatColor.GREEN+"Ausgewählt."));
-                    soupKit.setItemMeta(soupKitMeta); break;
+            case "ONLYSWORD": classicKitMeta.setLore(List.of(ChatColor.GREEN+"Ausgewählt."));
+                    classicKit.setItemMeta(classicKitMeta); break;
+            case "SOUP": tankKitMeta.setLore(List.of(ChatColor.GREEN+"Ausgewählt."));
+                    tankKit.setItemMeta(tankKitMeta); break;
             case "AXE": axtKitMeta.setLore(List.of(ChatColor.GREEN+"Ausgewählt."));
                     axtKit.setItemMeta(axtKitMeta); break;
             case "": break;
             case "UHC": uhcKitMeta.setLore(List.of(ChatColor.GREEN+"Ausgewählt."));
                     uhcKit.setItemMeta(uhcKitMeta); break;
-            default: onlySwordKitMeta.setLore(List.of(ChatColor.GREEN+"Ausgewählt."));
-                    onlySwordKit.setItemMeta(onlySwordKitMeta); break;
+            default: classicKitMeta.setLore(List.of(ChatColor.GREEN+"Ausgewählt."));
+                    classicKit.setItemMeta(classicKitMeta); break;
         }
 
-        kitInv.setItem(1,onlySwordKit);
-        kitInv.setItem(3,axtKit);
-        kitInv.setItem(5,uhcKit);
-        kitInv.setItem(7, soupKit);
+
+        kitInv.setItem(0,classicKit);
+        kitInv.setItem(2,tankKit);
+        kitInv.setItem(4,axtKit);
+        kitInv.setItem(6,rangeKit);
+        kitInv.setItem(8, uhcKit);
 
         player.openInventory(kitInv);
     }
