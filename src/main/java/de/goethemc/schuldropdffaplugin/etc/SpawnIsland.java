@@ -4,11 +4,12 @@ import de.goethemc.schuldropdffaplugin.SchulDropDffaPlugin;
 
 public class SpawnIsland {
     private final SchulDropDffaPlugin plugin;
-    public SpawnIsland(SchulDropDffaPlugin plugin){
+
+    public SpawnIsland(SchulDropDffaPlugin plugin) {
         this.plugin = plugin;
     }
 
-    public boolean isSpawnIsland(double x, double y, double z){
+    public boolean isSpawnIsland(double x, double y, double z) {
         double smallerX = smallerValue("X");
         double greaterX = greaterValue("X");
         double smallerY = smallerValue("Y");
@@ -23,19 +24,20 @@ public class SpawnIsland {
     }
 
 
-
     public double greaterValue(String path) {
-        double a = plugin.getConfig().getInt("spawn-area."+path+"1");
-        double b = plugin.getConfig().getInt("spawn-area."+path+"2");
+        double a = plugin.getConfig().getInt("spawn-area." + path + "1");
+        double b = plugin.getConfig().getInt("spawn-area." + path + "2");
 
-        if(a > b) return a;
+        if (a > b) return a;
         return b;
     }
-    public double smallerValue(String path){
-        double a = this.plugin.getConfig().getInt("spawn-area."+path+"1");
-        double b = this.plugin.getConfig().getInt("spawn-area."+path+"2");
 
-        if(a <= b) return a;
+    public double smallerValue(String path) {
+        double a = this.plugin.getConfig().getInt("spawn-area." + path + "1");
+        double b = this.plugin.getConfig().getInt("spawn-area." + path + "2");
+
+        if (a <= b) return a;
+
         return b;
     }
 }

@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -28,11 +29,12 @@ public class KitLogikWTF implements Listener {
 
     private final SchulDropDffaPlugin plugin;
 
-    public KitLogikWTF(SchulDropDffaPlugin plugin){
+    public KitLogikWTF(SchulDropDffaPlugin plugin) {
         this.plugin = plugin;
     }
 
-    ConcurrentHashMap<UUID,String> playerKitMap = new ConcurrentHashMap<>();
+    ConcurrentHashMap<UUID, String> playerKitMap = new ConcurrentHashMap<>();
+
     private final String uhc = "UHC";
     private final String onlySword = "ONLYSWORD";
     private final String soup = "SOUP";
@@ -42,11 +44,11 @@ public class KitLogikWTF implements Listener {
     public void onClick(InventoryClickEvent e) {
         if (e.getWhoClicked() instanceof Player pl) {
             UUID p = pl.getUniqueId();
-            if(e.getCurrentItem() == null) return;
+            if (e.getCurrentItem() == null) return;
 
             switch (e.getCurrentItem().getType()) {
                 case Material.GOLDEN_APPLE:
-                    if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD+"UHC")) {
+                    if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GOLD + "UHC")) {
                         if (playerKitMap.containsKey(p) && playerKitMap.get(p).equals("UHC")) {
                             //pl.sendMessage(tag.getTag()+ChatColor.RED+" Du kannst nicht das gleiche Kit zweimal auswählen!");
                             pl.playSound(pl, Sound.ENTITY_ITEM_PICKUP, 1.50F, 0.50F);
@@ -59,7 +61,7 @@ public class KitLogikWTF implements Listener {
                     }
                     break;
                 case Material.DIAMOND_SWORD:
-                    if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.AQUA+"Only Sword")) {
+                    if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.AQUA + "Only Sword")) {
                         if (playerKitMap.containsKey(p) && playerKitMap.get(p).equals("ONLYSWORD")) {
                             //pl.sendMessage(tag.getTag()+ChatColor.RED+" Du kannst nicht das gleiche Kit zweimal auswählen!");
                             //Bukkit.getConsoleSender().sendMessage("HalloTest");
@@ -73,11 +75,11 @@ public class KitLogikWTF implements Listener {
                     }
                     break;
                 case Material.MUSHROOM_STEW:
-                    if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_GRAY+"Soup")){
-                        if(playerKitMap.containsKey(p) && playerKitMap.get(p).equals("SOUP")){
-                            pl.playSound(pl, Sound.ENTITY_ITEM_PICKUP, 1.50F,0.50F);
-                        }else {
-                            pl.playSound(pl, Sound.ENTITY_ITEM_PICKUP, 1.50F,1.50F);
+                    if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.DARK_GRAY + "Soup")) {
+                        if (playerKitMap.containsKey(p) && playerKitMap.get(p).equals("SOUP")) {
+                            pl.playSound(pl, Sound.ENTITY_ITEM_PICKUP, 1.50F, 0.50F);
+                        } else {
+                            pl.playSound(pl, Sound.ENTITY_ITEM_PICKUP, 1.50F, 1.50F);
                             playerKitMap.put(p, this.soup);
                             pl.sendMessage(tag.getTag() + ChatColor.DARK_GRAY + "" + ChatColor.BOLD + " SOUP" + ChatColor.WHITE + "-Kit" + ChatColor.GREEN + " ausgewählt!");
                             kInv.openKitsInv(pl, "SOUP");
@@ -85,7 +87,7 @@ public class KitLogikWTF implements Listener {
                     }
                     break;
                 case Material.NETHERITE_AXE:
-                    if(e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.RED+"Axt")) {
+                    if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.RED + "Axt")) {
                         if (playerKitMap.containsKey(p) && playerKitMap.get(p).equals("AXE")) {
                             //pl.sendMessage(tag.getTag()+ChatColor.RED+" Du kannst nicht das gleiche Kit zweimal auswählen!");
                             pl.playSound(pl, Sound.ENTITY_ITEM_PICKUP, 1.50F, 0.50F);
@@ -102,20 +104,34 @@ public class KitLogikWTF implements Listener {
     }
 
     @EventHandler
-    public void onFallDamage(EntityDamageEvent event){
+    public void onFallDamage(EntityDamageEvent event) {
         int minFallDistance = plugin.getConfig().getInt("minFallDistance");
-        if (event.getEntity() instanceof Player player){
-            if (event.getCause() == EntityDamageEvent.DamageCause.FALL && player.getFallDistance() >= minFallDistance){
+        if (event.getEntity() instanceof Player player) {
+            if (event.getCause() == EntityDamageEvent.DamageCause.FALL && player.getFallDistance() >= minFallDistance) {
                 checkForKit(player);
             }
         }
     }
 
     @EventHandler
-    public void onPlayerDeath(PlayerDeathEvent e){
+    public void onPlayerRegen(EntityRegainHealthEvent e) {
+        if (e.getEntity() instanceof Player p) {
+            UUID pl = p.getUniqueId();
+            if (playerKitMap.containsKey(pl)) {
+                if (playerKitMap.get(pl).equals("UHC") || playerKitMap.get(pl).equals("SOUP")) {
+                    if (e.getRegainReason() == EntityRegainHealthEvent.RegainReason.REGEN || e.getRegainReason() == EntityRegainHealthEvent.RegainReason.SATIATED) {
+                        e.setCancelled(true);
+                    }
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerDeath(PlayerDeathEvent e) {
         Player died = e.getPlayer();
 
-        if(died.getKiller() == null) return;
+        if (died.getKiller() == null) return;
         Player killer = died.getKiller();
         killer.setHealthScale(20);
 
@@ -130,7 +146,7 @@ public class KitLogikWTF implements Listener {
         }
     }
 
-    public void checkForKit(Player p){
+    public void checkForKit(Player p) {
         UUID player = p.getUniqueId();
         if (playerKitMap.containsKey(player)) {
             switch (playerKitMap.get(player)) {

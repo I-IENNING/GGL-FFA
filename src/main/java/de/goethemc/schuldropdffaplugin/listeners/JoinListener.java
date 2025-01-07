@@ -16,10 +16,13 @@ public class JoinListener implements Listener {
     String tag = taggerino.getTag();
 
     private final SchulDropDffaPlugin plugin;
-    public JoinListener(SchulDropDffaPlugin plugin){this.plugin = plugin;}
+
+    public JoinListener(SchulDropDffaPlugin plugin) {
+        this.plugin = plugin;
+    }
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event){
+    public void onPlayerJoin(PlayerJoinEvent event) {
 
         int xCord = plugin.getConfig().getInt("SpawnX");
         int yCord = plugin.getConfig().getInt("SpawnY");
@@ -27,14 +30,14 @@ public class JoinListener implements Listener {
 
         Player player = event.getPlayer();
         //Teleport player
-        player.teleport(new Location(player.getWorld(),xCord,yCord,zCord));
+        player.teleport(new Location(player.getWorld(), xCord, yCord, zCord));
         //Set global Join-Message
-        event.setJoinMessage(tag + ChatColor.GREEN + " >>> " +  ChatColor.GOLD + player.getName()  + ChatColor.GREEN + " hat den Server betreten! Hi! " );
+        event.setJoinMessage(tag + ChatColor.GREEN + " >>> " + ChatColor.GOLD + player.getName() + ChatColor.GREEN + " hat den Server betreten! Hi! ");
         //Set "private" Join-Message
         player.sendMessage(tag + ChatColor.YELLOW + " Willkommen auf dem PVP-Server vom GGL!");
 
         player.sendTitle(ChatColor.YELLOW + "PVP", tag);
-        player.playSound(player.getLocation(), Sound.BLOCK_BELL_USE, 1,1);
+        player.playSound(player.getLocation(), Sound.BLOCK_BELL_USE, 1, 1);
 
         Inventory inventory = player.getInventory();
         inventory.clear();

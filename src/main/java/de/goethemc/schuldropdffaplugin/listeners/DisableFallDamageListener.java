@@ -5,6 +5,7 @@ import de.goethemc.schuldropdffaplugin.SchulDropDffaPlugin;
 import de.goethemc.schuldropdffaplugin.etc.Kits;
 import de.goethemc.schuldropdffaplugin.etc.PvpTag;
 import de.goethemc.schuldropdffaplugin.etc.SpawnIsland;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -21,18 +22,21 @@ public class DisableFallDamageListener implements Listener {
     PvpTag taggerino = new PvpTag();
     String tag = taggerino.getTag();
     private SchulDropDffaPlugin plugin;
-    public DisableFallDamageListener(SchulDropDffaPlugin plugin){
+
+    public DisableFallDamageListener(SchulDropDffaPlugin plugin) {
         this.plugin = plugin;
     }
 
     @EventHandler
-    public void onFallDamage(EntityDamageEvent event){
+    public void onFallDamage(EntityDamageEvent event) {
         int minFallDistance = plugin.getConfig().getInt("minFallDistance");
-        if (event.getEntity() instanceof Player player){
-            if (event.getCause() == EntityDamageEvent.DamageCause.FALL && player.getFallDistance() >= minFallDistance){
-                    event.setCancelled(true);
-                    player.playSound(player, Sound.ENTITY_ZOMBIE_ATTACK_WOODEN_DOOR,0.1F,0.5F);
-                    player.sendMessage(tag + ChatColor.GREEN + " Viel Erfolg in der Arena");
+        if (event.getEntity() instanceof Player player) {
+            if (event.getCause() == EntityDamageEvent.DamageCause.FALL && player.getFallDistance() >= minFallDistance) {
+                //Bukkit.getConsoleSender().sendMessage("MinFallDistance");
+
+                event.setCancelled(true);
+                player.playSound(player, Sound.ENTITY_ZOMBIE_ATTACK_WOODEN_DOOR, 0.1F, 0.5F);
+                player.sendMessage(tag + ChatColor.GREEN + " Viel Erfolg in der Arena");
             }
         }
     }

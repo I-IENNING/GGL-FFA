@@ -10,7 +10,7 @@ public final class SchulDropDffaPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN+"/|GoetheMC| FFA-Plugin gestartet!/");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "/|GoetheMC| FFA-Plugin gestartet! AAAAA/");
 
         getConfig().options().copyDefaults(true);
         saveConfig();
@@ -20,9 +20,9 @@ public final class SchulDropDffaPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JoinListener(this), this);
         getServer().getPluginManager().registerEvents(new DisableMiningOnSpawnListener(this), this);
         getServer().getPluginManager().registerEvents(new DisablePvpOnSpawnListener(this), this);
-        getServer().getPluginManager().registerEvents(new DisableFallDamageListener(this),this);
-        getServer().getPluginManager().registerEvents(new BlockPlace(this),this);
-        getServer().getPluginManager().registerEvents(new PlayerRespawnAndDeath(this),this);
+        getServer().getPluginManager().registerEvents(new DisableFallDamageListener(this), this);
+        getServer().getPluginManager().registerEvents(new BlockPlace(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerRespawnAndDeath(this), this);
         getServer().getPluginManager().registerEvents(new KitLogikWTF(this), this);
         getServer().getPluginManager().registerEvents(new SoupListener(), this);
     }

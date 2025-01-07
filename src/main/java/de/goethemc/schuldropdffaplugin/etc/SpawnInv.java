@@ -9,7 +9,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.List;
 
 public class SpawnInv {
-    public Inventory setPlayerInv(Inventory inventory){
+    public Inventory setPlayerInv(Inventory inventory) {
         inventory.clear();
 
         ItemStack selector = new ItemStack(Material.DIAMOND);

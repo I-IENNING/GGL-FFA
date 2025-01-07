@@ -22,11 +22,12 @@ public class BlockPlace implements Listener {
 
     private SchulDropDffaPlugin plugin;
 
-    public BlockPlace(SchulDropDffaPlugin plugin){
+    public BlockPlace(SchulDropDffaPlugin plugin) {
         this.plugin = plugin;
     }
+
     @EventHandler
-    public void bukcetEmpty(PlayerBucketEmptyEvent e){
+    public void bukcetEmpty(PlayerBucketEmptyEvent e) {
         Location loc = e.getBlock().getLocation();
 
         new BukkitRunnable() {
@@ -44,22 +45,25 @@ public class BlockPlace implements Listener {
         int maxY = plugin.getConfig().getInt("maxBauhoehe");
         Block block = e.getBlockPlaced();
         Player player = e.getPlayer();
-        if(e.getPlayer().getGameMode() != GameMode.CREATIVE)
+        if (e.getPlayer().getGameMode() != GameMode.CREATIVE)
             replaceBlock(block);
-        if(player.getLocation().getY() >= maxY ){
-            if (player.getGameMode() != GameMode.CREATIVE){
+        if (player.getLocation().getY() >= maxY) {
+            if (player.getGameMode() != GameMode.CREATIVE) {
+                //Bukkit.getConsoleSender().sendMessage("BLockPlaceEvent");
                 e.setCancelled(true);
-                player.sendMessage(tag + ChatColor.RED +" Du hast die maximale Bauhöhe erreicht!");
+                player.sendMessage(tag + ChatColor.RED + " Du hast die maximale Bauhöhe erreicht!");
             }
         }
     }
+
     @EventHandler
-    public void blockForm(BlockFromToEvent e){
+    public void blockForm(BlockFromToEvent e) {
+        //Bukkit.getConsoleSender().sendMessage("BlockFromToEvent");
         e.setCancelled(true);
     }
 
     @EventHandler
-    public void blockFormE(BlockFormEvent e){
+    public void blockFormE(BlockFormEvent e) {
         //Bukkit.getConsoleSender().sendMessage(e.getBlock()+"");
         replaceBlock(e.getBlock());
         new BukkitRunnable() {
@@ -70,28 +74,28 @@ public class BlockPlace implements Listener {
         }.runTaskLater(plugin, 1);
     }
 
-    public void replaceBlock(Block block){
+    public void replaceBlock(Block block) {
         Location loc = block.getLocation();
         Material blockType = block.getType();
 
-        new BukkitRunnable(){
+        new BukkitRunnable() {
             @Override
-            public void run(){
+            public void run() {
                 replaceBlockk(blockType, loc);
             }
-        }.runTaskLater(plugin, 20*10);
+        }.runTaskLater(plugin, 20 * 10);
     }
 
-    public void replaceBlockk(Material block, Location location){
-        if(location.getBlock().getType() == block){
+    public void replaceBlockk(Material block, Location location) {
+        if (location.getBlock().getType() == block) {
             location.getBlock().setType(Material.REDSTONE_BLOCK);
-            new BukkitRunnable(){
+            new BukkitRunnable() {
                 @Override
-                public void run(){
+                public void run() {
                     location.getBlock().setType(Material.AIR);
                 }
             }.runTaskLater(plugin, 20);
-        }else{
+        } else {
             //Bukkit.getConsoleSender().sendMessage("Nicht gleich! ");
         }
     }

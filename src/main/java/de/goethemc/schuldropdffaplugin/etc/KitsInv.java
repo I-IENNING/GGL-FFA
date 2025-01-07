@@ -11,18 +11,18 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.List;
 
 public class KitsInv {
-    public void openKitsInv(Player player,String ausgewählt){
+    public void openKitsInv(Player player, String ausgewählt) {
         Inventory kitInv = Bukkit.createInventory(player, 9, ChatColor.GOLD + "Kits");
 
         ItemStack classicKit = new ItemStack(Material.DIAMOND_SWORD);
         ItemMeta classicKitMeta = classicKit.getItemMeta();
-        classicKitMeta.setDisplayName(ChatColor.AQUA+ "Only Sword");
+        classicKitMeta.setDisplayName(ChatColor.AQUA + "Only Sword");
         classicKitMeta.setLore(List.of("1 Schwert + 2 Gold Äpfel"));
         classicKit.setItemMeta(classicKitMeta);
 
         ItemStack tankKit = new ItemStack(Material.MUSHROOM_STEW);
         ItemMeta tankKitMeta = tankKit.getItemMeta();
-        tankKitMeta.setDisplayName(ChatColor.DARK_GRAY+ "Soup");
+        tankKitMeta.setDisplayName(ChatColor.DARK_GRAY + "Soup");
         tankKitMeta.setLore(List.of("Eisenschwert + Lederrüstung + Soups"));
         tankKit.setItemMeta(tankKitMeta);
 
@@ -44,28 +44,38 @@ public class KitsInv {
         uhcKitMeta.setLore(List.of("Schwert + Lava + Wasser + Blöcke etc."));
         uhcKit.setItemMeta(uhcKitMeta);
 
-        switch (ausgewählt){
-            case "ONLYSWORD": classicKitMeta.setLore(List.of(ChatColor.GREEN+"Ausgewählt."));
-                    classicKit.setItemMeta(classicKitMeta); break;
-            case "SOUP": tankKitMeta.setLore(List.of(ChatColor.GREEN+"Ausgewählt."));
-                    tankKit.setItemMeta(tankKitMeta); break;
-            case "AXE": axtKitMeta.setLore(List.of(ChatColor.GREEN+"Ausgewählt."));
-                    axtKit.setItemMeta(axtKitMeta); break;
-            case "": break;
-            case "UHC": uhcKitMeta.setLore(List.of(ChatColor.GREEN+"Ausgewählt."));
-                    uhcKit.setItemMeta(uhcKitMeta); break;
-            default: classicKitMeta.setLore(List.of(ChatColor.GREEN+"Ausgewählt."));
-                    classicKit.setItemMeta(classicKitMeta); break;
+        switch (ausgewählt) {
+            case "ONLYSWORD":
+                classicKitMeta.setLore(List.of(ChatColor.GREEN + "Ausgewählt."));
+                classicKit.setItemMeta(classicKitMeta);
+                break;
+            case "SOUP":
+                tankKitMeta.setLore(List.of(ChatColor.GREEN + "Ausgewählt."));
+                tankKit.setItemMeta(tankKitMeta);
+                break;
+            case "AXE":
+                axtKitMeta.setLore(List.of(ChatColor.GREEN + "Ausgewählt."));
+                axtKit.setItemMeta(axtKitMeta);
+                break;
+            case "":
+                break;
+            case "UHC":
+                uhcKitMeta.setLore(List.of(ChatColor.GREEN + "Ausgewählt."));
+                uhcKit.setItemMeta(uhcKitMeta);
+                break;
+            default:
+                classicKitMeta.setLore(List.of(ChatColor.GREEN + "Ausgewählt."));
+                classicKit.setItemMeta(classicKitMeta);
+                break;
         }
 
 
-        kitInv.setItem(0,classicKit);
-        kitInv.setItem(2,tankKit);
-        kitInv.setItem(4,axtKit);
-        kitInv.setItem(6,rangeKit);
+        kitInv.setItem(0, classicKit);
+        kitInv.setItem(2, tankKit);
+        kitInv.setItem(4, axtKit);
+        kitInv.setItem(6, rangeKit);
         kitInv.setItem(8, uhcKit);
 
         player.openInventory(kitInv);
     }
-
 }
